@@ -1,4 +1,4 @@
-# Circuit on Sepolia Testnet  🐱
+# Circuit on Sepolia Testnet  
 
 ## Introduction
 
@@ -145,4 +145,4 @@ npx hardhat newcircuit --name newcircuit
 ```
 
 ## Contact 
-For any questions or inquiries, feel free to reach out via Mail(ishisingla181@gmail.com) or open an issue in the GitHub repository.
+For any questions or inquiries, feel free to reach out via Mail(ujjwala622@gmail.com) or open an issue in the GitHub repository.
