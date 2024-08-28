@@ -9,61 +9,66 @@ This project involves the deployment of a custom circuit written in Circom on th
 ### Templates
 
 ```
-pragma circom 2.0.0;
+pragma circom 2.0.0; 
 
-template Circuit () {  
-   // input signals
-   signal input a;
-   signal input b;
+template ujjwalanode () 
+{  
 
-   // Internal input signals
-   signal x;
-   signal y;
+    //signal inputs
+    signal input a;  
+    signal input b; 
 
-   // output signals
-   signal output Q;
+    //signals from gates
+    signal x;  
+    signal y; 
 
-   // component
-   component andGate = AND();
-   component orGate = OR();
-   component notGate = NOT();
+    //final signal output
+    signal output Q; 
+    
 
-   // logic
+    //component gate used to create custom circuit
+     component andGate = AND();
+     component notGate = NOT();
+     component orGate = OR();
 
-   andGate.a <== a;
-   andGate.b <== b;
-   x <== andGate.y;
+    //circuit logic
+    andGate.A <== a;
+    andGate.B <== b;
+    x <== andGate.out;
+  
+    notGate.A <== b;
+    y <== notGate.out;
 
-   notGate.in <== b;
-   y <== notGate.out;
-
-   orGate.a <== x;
-   orGate.b <== y;
-   Q <== orGate.y;
+    orGate.A <==x;
+    orGate.B <==y;
+    Q <== orGate.out; 
+    
 }
 
-template AND(){
-   signal input a;
-   signal input b;
-   signal output y;
-   y <== a*b;
-}
+template AND() {
+  signal input A;
+  signal input B;
+  signal output out;
 
-template OR(){
-   signal input a;
-   signal input b;
-   signal output y;
-   y <== a + b - a*b;
+  out <== A * B;
 }
 
 template NOT() {
-    signal input in;
-    signal output out;
+  signal input A;
+  signal output out;
 
-    out <== 1 + in - 2*in;
+  out <== 1 + A - 2 * A;
 }
 
-component main = Circuit();
+template OR() {
+  signal input A;
+  signal input B;
+  signal output out;
+
+  out <== A + B - A * B;
+}
+
+component main = ujjwalanode ();
 ```
 
 ### Install
